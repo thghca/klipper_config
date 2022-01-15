@@ -13,7 +13,7 @@
 #
 # Defaults to auto
 #
-#camera="auto"
+camera="raspi"
 
 ### Additional options to supply to MJPG Streamer for the USB camera
 #
@@ -55,7 +55,10 @@
 #
 # Defaults to 10fps
 #
-#camera_raspi_options="-fps 10"
+#camera_raspi_options="-fps 30"
+#camera_raspi_options="-x 640 -y 480 -fps 10 -br 56 -awb auto -ex auto -quality 50"
+camera_raspi_options="-x 640 -y 480 -fps -10 -br 58 -awb auto -ex auto"
+
 
 ### Configuration of camera HTTP output
 #
