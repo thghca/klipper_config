@@ -12,9 +12,9 @@ gcode:
 		{% set z_raised = act_z + z_ask%}
 	{% endif %}
 	
-	SAVE_GCODE_STATE NAME=raise_z_state
+	_GPUSH
 	
 	G90	;absolute positionning
 	G1 Z{z_raised} F{speed}
 	
-	RESTORE_GCODE_STATE NAME=raise_z_state
+	_GPOP

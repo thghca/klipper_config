@@ -1,3 +1,0 @@
-[gcode_macro ECHO]
-gcode:
-	{ action_respond_info(rawparams) }
