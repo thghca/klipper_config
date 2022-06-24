@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#workaround for klipper not support ascii chars
 export LANG="en_US.UTF-8"
 
 #####################################################################
