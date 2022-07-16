@@ -1,4 +1,0 @@
-	;printer limits
-	{% set X_MAX = printer.toolhead.axis_maximum.x|default(100)|float %}
-	{% set Y_MAX = printer.toolhead.axis_maximum.y|default(100)|float %}
-	{% set Z_MAX = printer.toolhead.axis_maximum.z|default(100)|float %}
