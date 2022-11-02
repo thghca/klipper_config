@@ -46,7 +46,8 @@ type = gpio
 off_when_shutdown = True
 locked_while_printing = True
 restart_klipper_when_powered = True
-restart_delay = 5
+restart_delay = 2
+bound_service = klipper
 pin = !gpio22
 initial_state = off
 
