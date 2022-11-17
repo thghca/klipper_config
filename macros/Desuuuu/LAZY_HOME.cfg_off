@@ -1,5 +1,0 @@
-[gcode_macro LAZY_HOME]
-gcode:
-  {% if printer.toolhead.homed_axes != "xyz" %}
-    G28
-  {% endif %}
