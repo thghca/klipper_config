@@ -1,0 +1,19 @@
+
+[stepper_z]
+endstop_pin: ^Z_MIN
+position_endstop: 0
+
+#Screw positions without offsets
+[bed_screws]
+probe_height: 0.02
+screw1: 195,195
+screw1_name: rear right screw
+screw2: 195,25
+screw2_name: front right screw
+screw3: 25,25
+screw3_name: front left screw
+screw4: 25,195
+screw4_name: rear left screw
+#horizontal_move_z: 10
+speed: 50
+#screw_thread: CW-M4
