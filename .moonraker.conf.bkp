@@ -59,5 +59,6 @@ origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 type = git_repo
 path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
-managed_services = crowsnest
+primary_branch = legacy/v3
+install_script = tools/install.sh
 
