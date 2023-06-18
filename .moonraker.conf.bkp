@@ -24,6 +24,8 @@ cors_domains =
 
 [history]
 
+[timelapse]
+
 [power LK4]
 type = gpio
 off_when_shutdown = True
@@ -65,4 +67,15 @@ primary_branch = main
 path = ~/moonraker-timelapse
 origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 managed_services = klipper moonraker
+
+[update_manager ZippyPrint]
+type = git_repo
+channel = dev
+primary_branch = master
+path = ~/printer_data/config
+origin = https://github.com/thghca/klipper_config.git
+is_system_service = False
+managed_services = 
+info_tags = 
+	desc=
 
