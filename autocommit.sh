@@ -8,7 +8,7 @@ export LANG="en_US.UTF-8"
 ### the listed folders, just keep that line commented out.        ###
 #####################################################################
 ### Path to your config folder you want to backup
-config_folder=~/printer_data/config
+config_folder=~/klipper_config
 
 ### Path to your Klipper folder, by default that is '~/klipper'
 klipper_folder=~/klipper
