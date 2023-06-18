@@ -1,19 +1,9 @@
 [server]
 host = 0.0.0.0
 port = 7125
-
-[file_manager]
-
-[data_store]
-temperature_store_size = 600
-gcode_store_size = 1000
+klippy_uds_address = /home/pi/printer_data/comms/klippy.sock
 
 [authorization]
-force_logins = True
-cors_domains = 
-	*.local
-	*.lan
-	*://app.fluidd.xyz
 trusted_clients = 
 	10.0.0.0/8
 	127.0.0.0/8
@@ -22,20 +12,17 @@ trusted_clients =
 	192.168.0.0/16
 	FE80::/10
 	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
 
 [octoprint_compat]
 
 [history]
-
-[update_manager]
-channel = dev
-enable_auto_refresh = True
-enable_system_updates = True
-
-[update_manager client fluidd]
-type = web
-repo = cadriel/fluidd
-path = ~/fluidd
 
 [power LK4]
 type = gpio
@@ -47,18 +34,35 @@ bound_service = klipper
 pin = !gpio22
 initial_state = off
 
-[update_manager timelapse]
-type = git_repo
-primary_branch = main
-path = ~/moonraker-timelapse
-origin = https://github.com/mainsail-crew/moonraker-timelapse.git
+[update_manager]
+channel = dev
+refresh_interval = 168
 
-[timelapse]
+[update_manager fluidd]
+type = web
+channel = stable
+repo = fluidd-core/fluidd
+path = ~/fluidd
 
 [update_manager crowsnest]
 type = git_repo
 path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
-primary_branch = legacy/v3
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
 install_script = tools/install.sh
+
+[update_manager timelapse]
+type = git_repo
+primary_branch = main
+path = ~/moonraker-timelapse
+origin = https://github.com/mainsail-crew/moonraker-timelapse.git
+managed_services = klipper moonraker
 

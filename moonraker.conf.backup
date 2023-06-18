@@ -1,79 +1,50 @@
 [server]
 host: 0.0.0.0
 port: 7125
-enable_debug_logging: False
-
-[file_manager]
-config_path: ~/klipper_config
-log_path: ~/klipper_logs
-
-[data_store]
-temperature_store_size: 600
-gcode_store_size: 1000
+klippy_uds_address: /home/pi/printer_data/comms/klippy.sock
 
 [authorization]
-force_logins: True
-cors_domains:
-  *.local
-  *.lan
-  *://app.fluidd.xyz
-
 trusted_clients:
-  10.0.0.0/8
-  127.0.0.0/8
-  169.254.0.0/16
-  172.16.0.0/12
-  192.168.0.0/16
-  FE80::/10
-  ::1/128
+    10.0.0.0/8
+    127.0.0.0/8
+    169.254.0.0/16
+    172.16.0.0/12
+    192.168.0.0/16
+    FE80::/10
+    ::1/128
+cors_domains:
+    *.lan
+    *.local
+    *://localhost
+    *://localhost:*
+    *://my.mainsail.xyz
+    *://app.fluidd.xyz
 
-# enables partial support of Octoprint API
 [octoprint_compat]
 
-# enables moonraker to track and store print history.
 [history]
 
-# this enables moonraker's update manager
 [update_manager]
 channel: dev
-enable_repo_debug: True
-enable_auto_refresh: True
-enable_system_updates: True
+refresh_interval: 168
 
-# this enabled fluidd updates
-[update_manager client fluidd]
+[update_manager fluidd-config]
+type: git_repo
+primary_branch: master
+path: ~/fluidd-config
+origin: https://github.com/fluidd-core/fluidd-config.git
+managed_services: klipper
+
+[update_manager fluidd]
 type: web
-repo: cadriel/fluidd
+channel: stable
+repo: fluidd-core/fluidd
 path: ~/fluidd
 
-[power LK4]
-type: gpio
-off_when_shutdown: True 
-locked_while_printing: True
-restart_klipper_when_powered: True
-restart_delay: 5
-pin: !gpio22
-initial_state: off
-
-[update_manager webcamd]
+# Crowsnest update_manager entry
+[update_manager crowsnest]
 type: git_repo
 path: ~/crowsnest
 origin: https://github.com/mainsail-crew/crowsnest.git
-
-[update_manager timelapse]
-type: git_repo
-primary_branch: main
-path: ~/moonraker-timelapse
-origin: https://github.com/mainsail-crew/moonraker-timelapse.git
-
-[timelapse]
-##   Following basic configuration is default to most images and don't need
-##   to be changed in most scenarios. Only uncomment and change it if your
-##   Image differ from standart installations. In most common scenarios 
-##   a User only need [timelapse] in there configuration.
-#output_path: ~/timelapse/
-##   Directory where the generated video will be saved
-#frame_path: /tmp/timelapse/
-##   Directory where the temporary frames are saved
-#ffmpeg_binary_path: /usr/bin/ffmpeg
-##   Directory where ffmpeg is installed
+managed_services: crowsnest
+install_script: tools/pkglist.sh
