@@ -1,3 +1,3 @@
 #!/bin/sh
 
-play "$@" &
+nohup play "$@" >/dev/null 2>&1 &
